@@ -1,6 +1,6 @@
 # Kentico Kontent sample React single-page application - Shopify
 [![Build Status](https://api.travis-ci.com/Kentico/kontent-sample-app-react.svg?branch=samples/shopify)](https://travis-ci.com/Kentico/kontent-sample-app-react)
-[![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kentico-kontent-sample-app-react-shopify.surge.sh/en-us/articles/3120ec15-a4a2-47ec-8ccd-c85ac8ac5ba5)
+[![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kontent-sample-app-react-shopify.surge.sh/en-us/articles/3120ec15-a4a2-47ec-8ccd-c85ac8ac5ba5)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
 This is a sample website written in JavaScript utilizing the Kentico Kontent Delivery API to manage and retrieve content. You can register your account for free at <https://app.kontent.ai>. For a brief walkthrough, read [Running the React sample app](https://docs.kontent.ai/tutorials/develop-apps/get-started/running-a-sample-application?tech=react) on our Developer Hub.
