@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@kentico/kontent-delivery": "^10.4.1",
+    "@kentico/kontent-smart-link": "^2.1.0",
     "@simply007org/react-spinners": "0.0.3",
     "google-maps-react": "^2.0.6",
     "immutable": "^4.0.0-rc.12",
@@ -46,5 +47,10 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [">0.3%", "not ie 11", "not dead", "not op_mini all"]
+  "browserslist": [
+    ">0.3%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all"
+  ]
 }
