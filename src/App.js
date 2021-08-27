@@ -17,12 +17,23 @@ import CoffeePage from './Pages/Coffee';
 import BrewerPage from './Pages/Brewer';
 import ContactsPage from './Pages/Contacts';
 
+import KontentSmartLink from '@kentico/kontent-smart-link'
+
 import {
   selectedProjectCookieName,
   projectConfigurationPath
 } from './Utilities/SelectedProject';
 
+  
+
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      kontentSmartLinkInit: null
+    }
+  }
+
   render() {
     const projectId = this.props.cookies.get(selectedProjectCookieName);
     if (!projectId) {
@@ -33,7 +44,10 @@ class App extends Component {
     // slice(1) removes the `?` at the beginning of `location.search`
     const infoMessage = qs.parse(location.search.slice(1)).infoMessage;
     return (
-      <div className="application-content">
+      <div className="application-content"
+        data-kontent-project-id={projectId}
+        data-kontent-language-codename={language}
+      >
         <Metadata />
         <Spinner name="apiSpinner">
           <div className="loader-bg">
@@ -106,6 +120,27 @@ class App extends Component {
         <Footer language={language} />
       </div>
     );
+  }
+  componentDidMount(){
+    const projectId = this.props.cookies.get(selectedProjectCookieName)
+    const lang = this.props.language
+    KontentSmartLink.initializeOnLoad({
+      debug: true,
+      defaultDataAttributes: {
+        projectId: projectId,
+        languageCodename: lang,
+      },
+      queryParam: "preview-mode"
+    }).then(result => {
+      this.setState({
+        kontentSmartLinkInit: result
+      })
+    })
+  }
+  componentWillUnmount(){
+    if(this.state.kontentSmartLinkInit) {
+      this.state.kontentSmartLinkInit.destroy();
+    }
   }
 }
 

@@ -5,20 +5,24 @@ import Link from '../Components/LowerCaseUrlLink';
 
 const TasteOurCoffee = props => {
   let cafes = props.cafes.map((cafe, index) => {
-    let name = cafe.system.name;
+    let city = cafe.city.value;
     let imageLink = cafe.photo.value[0].url;
+    let itemId = cafe.system.id;
 
     return (
       <div className="col-xs-6 col-md-3" key={index}>
-        <div>
+        <div data-kontent-item-id={itemId}>
           <Link to={`/${props.language}/cafes`} className="ourcoffee-tile-link">
-            <h2 className="ourcoffee-tile-text center-text">{name}</h2>
+            <h2 className="ourcoffee-tile-text center-text"
+              data-kontent-element-codename="city"
+            >{city}</h2>
             <span className="cafe-overlay"> </span>
             <img
-              alt={name}
+              alt={city}
               className="ourcoffee-tile-image"
               src={imageLink}
-              title={name}
+              title={city}
+              data-kontent-element-codename="photo"
             />
           </Link>
         </div>

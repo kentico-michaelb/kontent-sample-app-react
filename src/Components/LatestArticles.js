@@ -14,6 +14,7 @@ const LatestArticles = props => {
   };
 
   var otherArticles = props.articles.slice(1).map((article, index) => {
+    let itemId = article.system.id
     let title =
       article.title.value.trim().length > 0
         ? article.title.value
@@ -43,15 +44,27 @@ const LatestArticles = props => {
     let link = `/${props.language.toLowerCase()}/articles/${article.system.id}`;
 
     return (
-      <div className="col-md-3" key={index}>
+      <div className="col-md-3" key={index}
+        data-kontent-item-id={itemId}
+      >
         <div className="article-tile">
           <Link to={link}>{imageLink}</Link>
-          <div className="article-tile-date">{postDate}</div>
+          <div className="article-tile-date"
+            data-kontent-element-codename="post_date"
+          >
+            {postDate}
+          </div>
           <div className="article-tile-content">
-            <h2 className="h4">
+            <h2 className="h4"
+              data-kontent-element-codename="title"
+            >
               <Link to={link}>{title}</Link>
             </h2>
-            <p className="article-tile-text">{summary}</p>
+            <p className="article-tile-text"
+              data-kontent-element-codename="summary"
+            >
+              {summary}
+            </p>
           </div>
         </div>
       </div>
@@ -59,6 +72,8 @@ const LatestArticles = props => {
   });
 
   let article = props.articles[0];
+
+  let itemId = article.system.id;
 
   let title =
     article.title.value.trim().length > 0
@@ -92,17 +107,27 @@ const LatestArticles = props => {
   return (
     <div className="row">
       <h1 className="title-tab">{tabTitle}</h1>
-      <div className="article-tile article-tile-large">
+      <div className="article-tile article-tile-large"
+        data-kontent-item-id={itemId}
+      >
         <div className="col-md-12 col-lg-6">
           <Link to={link}>{imageLink}</Link>
         </div>
         <div className="col-md-12 col-lg-6">
-          <div className="article-tile-date">{postDate}</div>
+          <div className="article-tile-date"
+            data-kontent-element-codename="post_date"
+          >
+            {postDate}
+          </div>
           <div className="article-tile-content">
-            <h2>
+            <h2 data-kontent-element-codename="title">
               <Link to={link}>{title}</Link>
             </h2>
-            <p className="article-tile-text lead-paragraph">{summary}</p>
+            <p className="article-tile-text lead-paragraph"
+              data-kontent-element-codename="summary"
+            >
+              {summary}
+            </p>
           </div>
         </div>
       </div>

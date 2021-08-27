@@ -27,6 +27,7 @@ const RichTextElement = props => {
       className={props.className}
       dangerouslySetInnerHTML={{ __html: props.element.resolveHtml() }}
       onClick={e => handleClick(props.element, props.history, props.match, e)}
+      data-kontent-element-codename={props.dataKontentElementCodename}
     />
   );
 };
