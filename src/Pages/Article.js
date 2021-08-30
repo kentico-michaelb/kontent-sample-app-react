@@ -64,6 +64,8 @@ class Article extends Component {
       return <div className="container" />;
     }
 
+    let itemId = article.system.id;
+
     let formatDate = value => {
       return dateFormat(value, 'dddd, mmmm d, yyyy');
     };
@@ -94,6 +96,7 @@ class Article extends Component {
         <RichTextElement
           className="article-detail-content"
           element={article.bodyCopy}
+          dataKontentElementCodename="body_copy"
         />
       ) : (
         <p className="article-detail-content">
@@ -115,15 +118,29 @@ class Article extends Component {
           twitterDescription={article.metadataTwitterDescription}
           twitterImage={article.metadataTwitterImage}
         />
-        <article className="article-detail col-lg-9 col-md-12 article-detail-related-box">
-          <h2>{title}</h2>
-          <div className="article-detail-datetime">{postDate}</div>
+        <article className="article-detail col-lg-9 col-md-12 article-detail-related-box"
+          data-kontent-item-id={itemId}
+        >
+          <h2
+          data-kontent-element-codename="title"
+          >
+            {title}
+          </h2>
+          <div className="article-detail-datetime"
+            data-kontent-element-codename="post_date"
+          >
+            {postDate}
+          </div>
           <div className="row">
-            <div className="article-detail-image col-md-push-2 col-md-8">
+            <div className="article-detail-image col-md-push-2 col-md-8"
+              data-kontent-element-codename="teaser_image"
+            >
               {imageLink}
             </div>
           </div>
-          <div className="row">{bodyCopyElement}</div>
+          <div className="row">
+            {bodyCopyElement}
+          </div>
         </article>
       </div>
     );

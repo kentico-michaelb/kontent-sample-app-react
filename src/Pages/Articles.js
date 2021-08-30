@@ -60,6 +60,8 @@ class Articles extends Component {
         result.push(<div className="clear" key={counter++} />);
       }
 
+      let itemId = article.system.id;
+
       let title =
         article.title.value.trim().length > 0
           ? article.title.value
@@ -89,15 +91,27 @@ class Articles extends Component {
       let link = `/${this.props.language}/articles/${article.system.id}`;
 
       result.push(
-        <div className="col-md-3" key={counter++}>
+        <div className="col-md-3" key={counter++}
+          data-kontent-item-id={itemId}
+        >
           <div className="article-tile">
             <Link to={link}>{imageLink}</Link>
-            <div className="article-tile-date">{postDate}</div>
+            <div className="article-tile-date"
+              data-kontent-element-codename="post_date"
+            >
+              {postDate}
+            </div>
             <div className="article-tile-content">
-              <h2 className="h4">
+              <h2 className="h4"
+                data-kontent-element-codename="title"
+              >
                 <Link to={link}>{title}</Link>
               </h2>
-              <p className="article-tile-text">{summary}</p>
+              <p className="article-tile-text"
+                data-kontent-element-codename="summary"
+              >
+                {summary}
+              </p>
             </div>
           </div>
         </div>
