@@ -17,8 +17,6 @@ import CoffeePage from './Pages/Coffee';
 import BrewerPage from './Pages/Brewer';
 import ContactsPage from './Pages/Contacts';
 
-import KontentSmartLink from '@kentico/kontent-smart-link'
-
 import {
   selectedProjectCookieName,
   projectConfigurationPath
@@ -27,20 +25,18 @@ import {
   
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      kontentSmartLinkInit: null
-    }
-  }
-
   render() {
     const projectId = this.props.cookies.get(selectedProjectCookieName);
     if (!projectId) {
       return <Redirect to={projectConfigurationPath} />;
     }
 
-    const { language, changeLanguage, location } = this.props;
+    const { language, changeLanguage, location, editToggle } = this.props;
+
+    if(editToggle && this.props.history.location.search !== "?preview-mode"){
+      this.props.history.push("?preview-mode");
+    }
+
     // slice(1) removes the `?` at the beginning of `location.search`
     const infoMessage = qs.parse(location.search.slice(1)).infoMessage;
     return (
@@ -120,27 +116,6 @@ class App extends Component {
         <Footer language={language} />
       </div>
     );
-  }
-  componentDidMount(){
-    const projectId = this.props.cookies.get(selectedProjectCookieName)
-    const lang = this.props.language
-    KontentSmartLink.initializeOnLoad({
-      debug: true,
-      defaultDataAttributes: {
-        projectId: projectId,
-        languageCodename: lang,
-      },
-      queryParam: "preview-mode"
-    }).then(result => {
-      this.setState({
-        kontentSmartLinkInit: result
-      })
-    })
-  }
-  componentWillUnmount(){
-    if(this.state.kontentSmartLinkInit) {
-      this.state.kontentSmartLinkInit.destroy();
-    }
   }
 }
 
