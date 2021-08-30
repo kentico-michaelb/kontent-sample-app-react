@@ -47,6 +47,7 @@ class Cafes extends Component {
   render() {
     let createModel = cafe => {
       let model = {
+        itemId: cafe.system.id,
         name: cafe.system.name,
         imageLink: 'url(' + cafe.photo.value[0].url + ')',
         street: cafe.street.value,
@@ -68,7 +69,9 @@ class Cafes extends Component {
       .map(createModel)
       .map((model, index) => {
         return (
-          <div className="col-md-6" key={index}>
+          <div className="col-md-6" key={index}
+          data-kontent-item-id={model.itemId}
+          >
             <div
               className="cafe-image-tile js-scroll-to-map"
               data-address={model.dataAddress}
@@ -81,8 +84,11 @@ class Cafes extends Component {
                   backgroundPosition: 'right'
                 }}
               />
-              <div className="cafe-image-tile-content">
-                <h3 className="cafe-image-tile-name">{model.name}</h3>
+              <div className="cafe-image-tile-content"
+                data-kontent-element-codename="name"
+              >
+                <h3 className="cafe-image-tile-name"
+                >{model.name}</h3>
                 <address className="cafe-tile-address">
                   <span name={model.name} className="cafe-tile-address-anchor">
                     {model.street}, {model.city}
@@ -113,7 +119,10 @@ class Cafes extends Component {
         .filter(model => model.location === location)
         .map((model, modelIndex) => {
           return (
-            <p key={modelIndex}>
+            <p key={modelIndex} 
+              data-kontent-item-id={model.itemId}
+              data-kontent-element-codename="name"
+            >
               {model.name}, {model.street}, {model.phone}
             </p>
           );

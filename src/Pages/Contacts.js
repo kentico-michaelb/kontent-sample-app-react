@@ -52,6 +52,7 @@ class Contacts extends Component {
   render() {
     let createModel = cafe => {
       let model = {
+        itemId: cafe.system.id,
         name: cafe.system.name,
         street: cafe.street.value,
         city: cafe.city.value,
@@ -69,7 +70,10 @@ class Contacts extends Component {
 
     let roastery = this.state.cafes.map(createModel).map(model => {
       return (
-        <div className="col-md-12">
+        <div className="col-md-12"
+          data-kontent-item-id={model.itemId}
+          data-kontent-element-codename="name"
+        >
           <h2 className="contact-title">{this.props.t('roasteryTitle')}</h2>
           <ul className="contact-info">
             <li>{model.phone}</li>
@@ -100,7 +104,10 @@ class Contacts extends Component {
 
     let cafes = this.state.cafes.map(createModel).map((model, index) => {
       return (
-        <div className="col-md-6 col-lg-3" key={index}>
+        <div className="col-md-6 col-lg-3" key={index}
+          data-kontent-item-id={model.itemId}
+          data-kontent-element-codename="name"
+        >
           <div
             onClick={() => this.selectAddress(model.dataAddress)}
             className="cafe-tile cursor-hand js-scroll-to-map"

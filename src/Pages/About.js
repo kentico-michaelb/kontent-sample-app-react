@@ -61,6 +61,9 @@ class About extends Component {
     let facts =
       this.state.facts.value &&
       this.state.facts.value.map((fact, index) => {
+
+        let itemId = fact.system.id;
+
         let title =
           fact.title.value.trim().length > 0
             ? fact.title.value
@@ -71,6 +74,7 @@ class About extends Component {
             <RichTextElement
               className="text-and-image-text"
               element={fact.description}
+              dataKontentElementCodename="description"
             />
           ) : (
             <p className="text-and-image-text">
@@ -94,19 +98,31 @@ class About extends Component {
 
         if (index % 2 === 0) {
           return (
-            <section className="row text-and-image" key={index}>
-              <h2 className="col-lg-12">{title}</h2>
+            <section className="row text-and-image" key={index} 
+              data-kontent-item-id={itemId}
+            >
+              <h2 className="col-lg-12"
+                data-kontent-element-codename="title"
+              >{title}</h2>
               <div className="col-md-6">{descriptionElement}</div>
-              <div className="col-md-6">{imageLink}</div>
+              <div className="col-md-6"
+                data-kontent-element-codename="image"
+              >{imageLink}</div>
             </section>
           );
         }
 
         return (
-          <section className="row text-and-image" key={index}>
-            <h2 className="col-lg-12">{title}</h2>
+          <section className="row text-and-image" key={index}
+            data-kontent-item-id={itemId}
+          >
+            <h2 className="col-lg-12"
+              data-kontent-element-codename="title"
+            >{title}</h2>
             <div className="col-md-6 col-md-push-6">{descriptionElement}</div>
-            <div className="col-md-6 col-md-pull-6">{imageLink}</div>
+            <div className="col-md-6 col-md-pull-6"
+              data-kontent-element-codename="image"
+            >{imageLink}</div>
           </section>
         );
       });
@@ -114,7 +130,7 @@ class About extends Component {
     let metaData = this.state.metaData;
 
     return (
-      <div className="container">
+      <div className="container" >
         <Metadata
           title={metaData.metadataMetaTitle}
           description={metaData.metadataMetaDescription}
