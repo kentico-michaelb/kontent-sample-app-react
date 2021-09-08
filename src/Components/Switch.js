@@ -3,7 +3,6 @@ import '../switch.css';
 
 // credit to: https://upmostly.com/tutorials/build-a-react-switch-toggle-component
 const Switch = ({ isOn, handleToggle }) => {
-    console.log(isOn)
   return (
     <div className="toggle-wrapper">
       <input
@@ -16,7 +15,7 @@ const Switch = ({ isOn, handleToggle }) => {
       <label
         className="react-switch-label"
         htmlFor={`react-switch-new`}
-        style={{ background: isOn && '#06D6A0' }}
+        style={{ background: isOn && '#2C9E7E' }}
       >
         <span className={`react-switch-button`} />
       </label>

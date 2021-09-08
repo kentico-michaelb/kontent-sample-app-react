@@ -31,11 +31,7 @@ class App extends Component {
       return <Redirect to={projectConfigurationPath} />;
     }
 
-    const { language, changeLanguage, location, editToggle } = this.props;
-
-    if(editToggle && this.props.history.location.search !== "?preview-mode"){
-      this.props.history.push("?preview-mode");
-    }
+    const { language, changeLanguage, location} = this.props;
 
     // slice(1) removes the `?` at the beginning of `location.search`
     const infoMessage = qs.parse(location.search.slice(1)).infoMessage;
