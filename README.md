@@ -57,6 +57,11 @@ To preview content in the sample application, follow these steps:
 
 When you now run the application, you will see all project content including the unpublished version of content items.
 
+### Edit Mode
+This application uses the [Kontent Smart Link SDK](https://github.com/Kentico/kontent-smart-link) to make [editing content directly from preview](https://docs.kontent.ai/tutorials/develop-apps/build-strong-foundation/set-up-editing-from-preview) possible. If [previewing content from your project](#previewing-content-from-your-project) has been configured, an "Edit Mode" toggle will appear on the bottom left of your site.
+
+![Edit mode button preview](./public/Images/readme_editMode.png)
+
 ## Content administration
 
 1. Navigate to <https://app.kontent.ai> in your browser.
